@@ -87,15 +87,15 @@ export default function Skills() {
   const softRef = useScrollAnimation()
 
   return (
-    <section id="skills" className="py-24 px-6">
+    <section id="expertise" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <div ref={headerRef} className="animate-on-scroll mb-12">
           <div className="flex items-center gap-3 mb-3">
-            <span className="text-violet-600 text-sm font-semibold tracking-widest uppercase">04 / Skills</span>
+            <span className="text-violet-600 text-sm font-semibold tracking-widest uppercase">Expertise</span>
             <div className="flex-1 h-px bg-gradient-to-r from-violet-400/40 to-transparent" />
           </div>
           <h2 className="section-title">
-            Technical <span className="gradient-text">Skills</span>
+            Technical <span className="gradient-text">Expertise</span>
           </h2>
           <p className="section-subtitle">Technologies and tools I work with</p>
         </div>

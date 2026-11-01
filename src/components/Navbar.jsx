@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 
 const navLinks = [
   { label: 'About', href: '#about' },
-  { label: 'Experience', href: '#experience' },
+  { label: 'Expertise', href: '#expertise' },
+  { label: 'Services', href: '#services' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Education', href: '#education' },
+  { label: 'Process', href: '#process' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -51,16 +51,6 @@ export default function Navbar() {
               </button>
             </li>
           ))}
-          <li className="ml-2">
-            <a
-              href="https://mail.google.com/mail/?view=cm&to=gutierrezjohn409@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 text-sm font-semibold rounded-lg bg-violet-600 text-white border border-violet-600 hover:bg-violet-500 transition-all duration-200 shadow-[0_8px_20px_rgba(124,58,237,0.18)]"
-            >
-              Hire Me
-            </a>
-          </li>
         </ul>
 
         {/* Mobile Hamburger */}
@@ -94,14 +84,6 @@ export default function Navbar() {
               </button>
             </li>
           ))}
-          <li className="pt-2">
-            <a
-              href="https://mail.google.com/mail/?view=cm&to=gutierrezjohn409@gmail.com"
-              className="block w-full text-center px-4 py-3 text-sm font-semibold rounded-lg bg-violet-600 text-white border border-violet-600"
-            >
-              Hire Me
-            </a>
-          </li>
         </ul>
       </div>
     </header>
