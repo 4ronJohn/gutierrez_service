@@ -4,39 +4,25 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="hero-section relative flex items-center overflow-hidden"
     >
-      {/* Animated background blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-fuchsia-500/10 rounded-full blur-3xl animate-pulse-slow animation-delay-400" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-violet-500/5 rounded-full blur-3xl" />
-        {/* Grid overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: `linear-gradient(rgba(124,58,237,0.9) 1px, transparent 1px), linear-gradient(90deg, rgba(124,58,237,0.9) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px',
-          }}
-        />
-      </div>
-
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <div className="relative z-10 grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 py-20 mx-auto lg:grid-cols-12 lg:gap-16">
+        <div className="hero-copy lg:col-span-8">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-100 border border-violet-200 text-violet-700 text-sm font-medium mb-8 animate-fade-in">
+        <div className="inline-flex items-center gap-3 mb-8 animate-fade-in">
           <span className="w-2 h-2 rounded-full bg-violet-500 animate-pulse" />
           Digital Solutions Developer
         </div>
 
         {/* Name */}
         <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-4 animate-fade-in animation-delay-100">
-          <span className="gradient-text">Aron John</span>
+          <span>Aron John</span>
           <br />
-          <span className="text-slate-900">Gutierrez</span>
+          <span className="italic">Gutierrez</span>
         </h1>
 
         {/* Services */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-6 animate-fade-in animation-delay-200">
+        <div className="hero-services flex flex-wrap items-center justify-start gap-2 mb-6 animate-fade-in animation-delay-200">
           <span className="px-3 py-1 rounded-full bg-white/90 text-slate-700 text-sm border border-violet-100 shadow-sm">Web Development</span>
           <span className="text-slate-400">·</span>
           <span className="px-3 py-1 rounded-full bg-white/90 text-slate-700 text-sm border border-violet-100 shadow-sm">Workflow Automation</span>
@@ -47,17 +33,17 @@ export default function Hero() {
         </div>
 
         {/* Headline */}
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 mb-5 animate-fade-in animation-delay-200">
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-5 animate-fade-in animation-delay-200">
           Turning Ideas Into Digital Solutions.
         </h2>
 
         {/* Introduction */}
-        <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-5 animate-fade-in animation-delay-300">
+        <p className="text-slate-600 text-lg md:text-xl max-w-2xl leading-relaxed mb-5 animate-fade-in animation-delay-300">
           I build websites, automate workflows, and develop smart digital solutions that help businesses work better, faster, and smarter.
         </p>
 
         {/* CTAs  */}
-        <div className="flex flex-wrap items-center justify-center gap-4 animate-fade-in animation-delay-400">
+        <div className="flex flex-wrap items-center justify-start gap-4 animate-fade-in animation-delay-400">
           <button
             onClick={() => scrollTo('#services')}
             className="btn-primary flex items-center gap-2"
@@ -74,7 +60,10 @@ export default function Hero() {
             Discuss a Project
           </button>
         </div>
-
+        </div>
+        <div className="hero-window hidden lg:block lg:col-span-4" aria-hidden="true">
+          <div className="hero-window-inner" />
+        </div>
       </div>
 
       {/* Scroll indicator */}

@@ -41,7 +41,7 @@ export default function Contact() {
   const cardsRef = useScrollAnimation()
 
   return (
-    <section id="contact" className="py-24 px-6">
+    <section id="contact" className="contact-section py-24 px-6">
       <div className="max-w-4xl mx-auto">
         <div ref={headerRef} className="animate-on-scroll text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-3">
@@ -58,29 +58,6 @@ export default function Contact() {
         </div>
 
         <div ref={cardsRef} className="animate-on-scroll">
-          {/* CTA Banner */}
-          <div className="relative glass-card p-8 mb-8 overflow-hidden text-center">
-            <div className="absolute inset-0 bg-gradient-to-br from-violet-50 via-transparent to-fuchsia-50 pointer-events-none" />
-            <div className="relative z-10">
-              <div className="text-4xl mb-4">👋</div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">Open for Project Inquiries</h3>
-              <p className="text-slate-600 mb-6 max-w-md mx-auto">
-                Have a project in mind? Let's discuss how a digital solution can help.
-              </p>
-              <a
-                href="https://mail.google.com/mail/?view=cm&to=gutierrezjohn409@gmail.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary inline-flex items-center gap-2"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                Let's Discuss Your Project
-              </a>
-            </div>
-          </div>
-
           {/* Contact Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {contactItems.map((item) => (

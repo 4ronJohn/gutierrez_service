@@ -68,16 +68,16 @@ const softSkills = [
 function SkillGroup({ group }) {
   const ref = useScrollAnimation()
   return (
-    <div ref={ref} className="animate-on-scroll glass-card p-6 hover:border-violet-200 transition-all duration-300">
+    <div ref={ref} className="skill-card animate-on-scroll glass-card hover:border-violet-200 transition-all duration-300">
       <div className="flex items-center gap-2 mb-5">
         <span className="text-2xl">{group.icon}</span>
         <h3 className="font-semibold text-slate-800">{group.category}</h3>
       </div>
-      <div className="flex flex-wrap gap-2">
+      <ul className="skill-list">
         {group.skills.map((skill) => (
-          <span key={skill} className="tag">{skill}</span>
+          <li key={skill}>{skill}</li>
         ))}
-      </div>
+      </ul>
     </div>
   )
 }
@@ -100,7 +100,7 @@ export default function Skills() {
           <p className="section-subtitle">Technologies and tools I work with</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-5 mb-10">
+        <div className="grid md:grid-cols-3 gap-px mb-10 border border-violet-100 bg-violet-100">
           {skillGroups.map((group) => (
             <SkillGroup key={group.category} group={group} />
           ))}

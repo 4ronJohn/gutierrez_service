@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 const projects = [
@@ -198,6 +198,8 @@ function ProjectCard({ project }) {
   const [activeShot, setActiveShot] = useState(0)
   const [lightbox, setLightbox] = useState(false)
   const ref = useScrollAnimation()
+  const tabScrollRef = useRef(null)
+  const tabRowRef = useRef(null)
 
   const openLightbox = useCallback(() => setLightbox(true), [])
   const closeLightbox = useCallback(() => setLightbox(null), [])
@@ -208,6 +210,21 @@ function ProjectCard({ project }) {
   }, [project.screenshots.length])
   const previousShot = useCallback(() => navigateShot(-1), [navigateShot])
   const nextShot = useCallback(() => navigateShot(1), [navigateShot])
+
+  useEffect(() => {
+    const container = tabScrollRef.current
+    const tab = tabRowRef.current?.children[activeShot]
+    if (!container || !tab) return
+
+    const containerBounds = container.getBoundingClientRect()
+    const tabBounds = tab.getBoundingClientRect()
+
+    if (tabBounds.left < containerBounds.left) {
+      container.scrollBy({ left: tabBounds.left - containerBounds.left, behavior: 'smooth' })
+    } else if (tabBounds.right > containerBounds.right) {
+      container.scrollBy({ left: tabBounds.right - containerBounds.right, behavior: 'smooth' })
+    }
+  }, [activeShot])
 
   const currentShot = project.screenshots[activeShot]
 
@@ -224,27 +241,29 @@ function ProjectCard({ project }) {
         />
       )}
 
-      <div ref={ref} className="animate-on-scroll">
-        <div className="glass-card overflow-hidden hover:border-violet-200 transition-all duration-300">
+      <div ref={ref} className="project-entry animate-on-scroll">
+        <div className="project-card glass-card hover:border-violet-200 transition-all duration-300">
           <div className="grid lg:grid-cols-2 gap-0">
 
             {/* Screenshot Panel */}
             <div className="relative bg-violet-50/60 border-b lg:border-b-0 lg:border-r border-violet-100">
               {/* Tab bar */}
-              <div className="flex items-center gap-1 px-3 pt-3 pb-0 overflow-x-auto scrollbar-none">
-                {project.screenshots.map((shot, i) => (
-                  <button
-                    key={shot.label}
-                    onClick={() => setActiveShot(i)}
-                    className={`flex-shrink-0 px-3 py-1.5 rounded-t-lg text-xs font-medium transition-all duration-200 ${
-                      activeShot === i
-                        ? 'bg-white text-violet-700 border border-b-0 border-violet-200'
-                        : 'text-slate-500 hover:text-violet-700'
-                    }`}
-                  >
-                    {shot.label}
-                  </button>
-                ))}
+              <div ref={tabScrollRef} className="project-tab-scroll">
+                <div ref={tabRowRef} className="project-tab-row flex items-center gap-1 px-3 pt-3 pb-0">
+                  {project.screenshots.map((shot, i) => (
+                    <button
+                      key={shot.label}
+                      onClick={() => setActiveShot(i)}
+                      className={`project-tab flex-shrink-0 px-3 py-1.5 rounded-t-lg text-xs font-medium transition-all duration-200 ${
+                        activeShot === i
+                          ? 'bg-white text-violet-700 border border-b-0 border-violet-200'
+                          : 'text-slate-500 hover:text-violet-700'
+                      }`}
+                    >
+                      {shot.label}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               {/* Screenshot with hover + click to enlarge */}
@@ -379,7 +398,7 @@ export default function Projects() {
           <p className="section-subtitle">Things I've built and shipped</p>
         </div>
 
-        <div className="space-y-10">
+        <div className="space-y-16">
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
