@@ -457,11 +457,11 @@ main > section:not(.hero-section) [class*='tracking-wide'] {
   font-family: 'JetBrains Mono', monospace;
 }
 
-main > section:not(.hero-section) > div > div > div:first-child span {
+main > section:not(.hero-section) > div > .animate-on-scroll > div:first-child span {
   color: var(--accent);
 }
 
-main > section:not(.hero-section) > div > div > div:first-child > div {
+main > section:not(.hero-section) > div > .animate-on-scroll > div:first-child > div {
   height: 1px;
   background: var(--border);
 }
